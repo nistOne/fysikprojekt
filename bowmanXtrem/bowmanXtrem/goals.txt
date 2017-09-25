@@ -1,0 +1,17 @@
+
+
+1	arena (Game Manager)
+	1.1 mål
+	1.2 hinder
+	1.3	fler banor
+
+2	pil
+	2.1 fler pilar
+
+3	input
+	3.1 knapp input
+	3.2 mus input
+
+4	fläkt
+	4.1 vinklad
+	4.2 modifierbar fläkt
