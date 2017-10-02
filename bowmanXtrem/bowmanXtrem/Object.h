@@ -1,0 +1,25 @@
+#pragma once
+#include "Globals.h"
+
+class Obj
+{
+public:
+
+	Obj(vector pos, vector size, float angle);
+	~Obj();
+
+	virtual void draw();
+	void setRenderTarget(sf::RenderTarget * window);
+
+protected:
+
+	sf::RenderTarget * window;
+
+	sf::RectangleShape shape;
+
+	vector pos;
+	vector size;
+	float angle;
+	bbox bbox;
+};
+
