@@ -11,7 +11,7 @@ public:
 	vector getUp()	{ return vector(-dir.y, dir.x); }
 	float getAngle()	{return atan((dir.y / dir.x)) * 180 / 3.14;}
 
-	void update() override;
+	void update(int t);
 
 private:
 	vector dir;

@@ -23,11 +23,16 @@ void ObjectHandler::draw()
 	}
 }
 
-void ObjectHandler::update()
+void ObjectHandler::update(int t)
 {
+	Arrow* temp = dynamic_cast<Arrow*>(&dynObjects.at(0));
+	if (temp != nullptr)
+	{
+		temp->update(t);
+	}
 	for (int i = 0; i < dynObjects.size(); i++)
 	{
-		dynObjects.at(i).update();
+		dynObjects.at(i).update(t);
 	}
 
 }
@@ -39,5 +44,5 @@ void ObjectHandler::addWall(vector pos, vector size, float angle)
 
 void ObjectHandler::shootArrow(float angle, float spd)
 {
-	dynObjects.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(10,3), angle, spd));
+	dynObjects.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(20,2), angle, spd));
 }

@@ -10,11 +10,11 @@ public:
 	~ObjectHandler();
 
 	void draw();
-	void update();
+	void update(int t);
 	void addWall(vector pos, vector size, float angle);
 	void shootArrow(float angle, float spd);
 
 private:
 	std::vector<Obj> statObjects;
-	std::vector<Obj> dynObjects;
+	std::vector<Arrow> dynObjects;
 };

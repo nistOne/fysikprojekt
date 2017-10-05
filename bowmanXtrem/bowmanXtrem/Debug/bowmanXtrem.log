@@ -1,9 +1,7 @@
-﻿  Arrow.cpp
+﻿  ObjectHandler.cpp
 c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\arrow.h(12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  ObjectHandler.cpp
-  Main.cpp
-  Game.cpp
+c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\objecthandler.cpp(15): warning C4018: '<': signed/unsigned mismatch
+c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\objecthandler.cpp(20): warning C4018: '<': signed/unsigned mismatch
+c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\objecthandler.cpp(33): warning C4018: '<': signed/unsigned mismatch
   bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.exe
   bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)

@@ -16,6 +16,8 @@ private:
 	ObjectHandler objHandler;
 	bool run = true;
 
+	int t = 0;
+
 	void makeWorld();
 };
 
