@@ -1,8 +1,6 @@
 #pragma once
 #include "Object.h"
 
-bbox box;
-
 class Arrow : public Obj
 {
 public:
@@ -19,6 +17,6 @@ private:
 	vector dir;
 	float spd;
 
-	bool collideWith(bm::bbox test);
+	bool collideWith(bm::bbox box);
 };
 
