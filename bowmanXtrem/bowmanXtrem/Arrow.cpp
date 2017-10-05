@@ -23,10 +23,12 @@ void Arrow::update(int t)
 	res.x = dir.x * spd;
 	res.y = dir.y * spd;
 
-	pos = pos.add(res);
+	pos = pos + res;
 
 	pos.y = SCREEN_HEIGHT_MIDDLE + res.y*t + ((a*t*t) / 2);
 
 	this->shape.setRotation(getAngle());
 	this->shape.setPosition(sf::Vector2f(pos.x, pos.y));
+
+
 }

@@ -10,10 +10,10 @@ Obj::Obj(vector pos, vector size, float angle)
 	//vector rot = vector((size.x*cos(angle)), (size.y*sin(angle)));
 	vector rot = size;
 
-	bbox.pos1 = pos.add(vector(-rot.x, -rot.y));
-	bbox.pos2 = pos.add(vector(rot.x, -rot.y));
-	bbox.pos3 = pos.add(vector(-rot.x, rot.y));
-	bbox.pos4 = pos.add(vector(rot.x, rot.y));
+	bbox.pos1 = pos + (vector(-rot.x, -rot.y));
+	bbox.pos2 = pos + (vector(rot.x, -rot.y));
+	bbox.pos3 = pos + (vector(-rot.x, rot.y));
+	bbox.pos4 = pos + (vector(rot.x, rot.y));
 
 	this->shape.setPosition(sf::Vector2f(bbox.pos1.x, bbox.pos1.y));
 	this->shape.setRotation(angle);

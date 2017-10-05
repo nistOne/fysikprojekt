@@ -21,7 +21,7 @@ struct vector
 		this->y = y;
 	}
 
-	vector add(vector vec2) {
+	vector operator+ (vector vec2) {
 		vector temp;
 		temp.x = this->x + vec2.x;
 		temp.y = this->y + vec2.y;

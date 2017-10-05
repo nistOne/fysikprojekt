@@ -1,5 +1,3 @@
-﻿  Arrow.cpp
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\arrow.h(12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\arrow.cpp(20): warning C4305: 'initializing': truncation from 'double' to 'float'
+﻿  Object.cpp
   bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.exe
   bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)
