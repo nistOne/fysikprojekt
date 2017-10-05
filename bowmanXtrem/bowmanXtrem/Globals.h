@@ -52,10 +52,13 @@ struct vector
 	}
 };
 
-struct bbox
-{
-	vector pos1;
-	vector pos2;
-	vector pos3;
-	vector pos4;
-};
+
+namespace bm {
+	struct bbox
+	{
+		vector pos1;
+		vector pos2;
+		vector pos3;
+		vector pos4;
+	};
+}

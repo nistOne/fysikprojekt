@@ -32,3 +32,15 @@ void Arrow::update(int t)
 
 
 }
+
+bool Arrow::collideWith(bm::bbox test)
+{
+	bool flag = false;
+
+	vector a_normal;
+	vector b_normal;
+	vector c_normal;
+	vector d_normal;
+
+	return ;
+}
