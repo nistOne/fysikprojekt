@@ -16,7 +16,7 @@ Obj::Obj(vector pos, vector size, float angle)
 	bbox.pos4 = pos.add(vector(rot.x, rot.y));
 
 	this->shape.setPosition(sf::Vector2f(bbox.pos1.x, bbox.pos1.y));
-
+	this->shape.setRotation(angle);
 	this->shape.setSize(sf::Vector2f(2*size.x, 2*size.y));
 }
 
@@ -27,6 +27,10 @@ Obj::~Obj()
 void Obj::draw()
 {
 	gWindow->draw(this->shape);
+}
+
+void Obj::update()
+{
 }
 
 void Obj::setRenderTarget(sf::RenderTarget * window)

@@ -9,6 +9,7 @@ public:
 	~Obj();
 
 	virtual void draw();
+	virtual void update();
 	void setRenderTarget(sf::RenderTarget * window);
 
 protected:
