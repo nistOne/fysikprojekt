@@ -27,6 +27,29 @@ struct vector
 		temp.y = this->y + vec2.y;
 		return temp;
 	};
+
+	vector operator* (vector vec2)
+	{
+		vector temp;
+		temp.x = this->x * vec2.x;
+		temp.y = this->y * vec2.y;
+		return temp;
+	}
+
+	vector operator/ (float denominate)
+	{
+		vector temp;
+		temp.x = this->x / denominate;
+		temp.y = this->y / denominate;
+		return temp;
+	}
+
+	vector normalize ()
+	{
+		float temp = sqrt(this->x*(this->x) + this->y*this->y);
+		vector ret(this->x / temp, this->y / temp);
+		return ret;
+	}
 };
 
 struct bbox
