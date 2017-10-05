@@ -1,7 +1,15 @@
-﻿  ObjectHandler.cpp
+﻿  Game.cpp
+c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\game.cpp(48): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\game.cpp(49): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\game.cpp(50): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
+  Compiling...
+  Wall.cpp
+  ObjectHandler.cpp
 c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\objecthandler.cpp(14): warning C4018: '<': signed/unsigned mismatch
 c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\objecthandler.cpp(19): warning C4018: '<': signed/unsigned mismatch
-  Game.cpp
+  Object.cpp
+  Main.cpp
   Generating Code...
   bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.exe
   bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)

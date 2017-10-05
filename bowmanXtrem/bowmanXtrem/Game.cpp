@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "Window.h"
-#include "ObjectHandler.h"
 
 Game::Game()
 {
@@ -14,9 +13,8 @@ Game::~Game()
 
 void Game::gameLoop()
 {
-	ObjectHandler objHandler;
 
-	objHandler.addWall(vector(100, 100), vector(50, 50), 0);
+	makeWorld();
 
 	//sf::CircleShape shape(100.f);
 	//shape.setFillColor(sf::Color::Red);
@@ -29,8 +27,8 @@ void Game::gameLoop()
 			if (event.key.code == sf::Keyboard::Escape)
 				gWindow->close();
 
-			//if (event.type == sf::Event::Closed)
-			//	gWindow->close();
+			//if (event.type == sf::event::closed)
+			//	gwindow->close();
 		}
 
 		gWindow->clear();
@@ -42,5 +40,13 @@ void Game::gameLoop()
 
 void Game::restart()
 {
+
+}
+
+void Game::makeWorld()
+{
+	objHandler.addWall(vector(0, SCREEN_HEIGHT*2/3), vector(SCREEN_WIDTH/2.7, SCREEN_HEIGHT/18), 0);
+	objHandler.addWall(vector(SCREEN_WIDTH, SCREEN_HEIGHT * 2 / 3), vector(SCREEN_WIDTH/2.7, SCREEN_HEIGHT / 18), 0);
+	objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2 / 3) + SCREEN_HEIGHT / 4.5), vector(SCREEN_WIDTH/2, SCREEN_HEIGHT / 5.9), 0);
 
 }

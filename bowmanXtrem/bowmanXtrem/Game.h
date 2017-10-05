@@ -1,5 +1,6 @@
 #pragma once
 #include "Globals.h"
+#include "ObjectHandler.h"
 
 class Game
 {
@@ -11,11 +12,10 @@ public:
 	void stopLoop() { this->run = false; };
 
 	void restart();
-	
 private:
-
+	ObjectHandler objHandler;
 	bool run = true;
 
-
+	void makeWorld();
 };
 
