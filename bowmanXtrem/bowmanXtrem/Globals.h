@@ -70,24 +70,6 @@ struct vector
 	}
 };
 
-//float dotP(vector a, vector b)
-//{
-//	return a.x * b.x + a.y * b.y;
-//}
-//
-//// Projection of vector a on vector b
-//vector proj(vector a, vector b)
-//{
-//	b.scale( dotP(a, b) / (std::pow(b.length(), 2)) );
-//	return b;
-//}
-//
-//bool pointInFrontOfPlane(vector point, vector plane_normal, float plane_length)
-//{
-//	return dotP(point, plane_normal) > plane_length;
-//}
-
-
 namespace bm {
 	struct bbox
 	{
