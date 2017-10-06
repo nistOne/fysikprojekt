@@ -21,6 +21,6 @@ protected:
 	vector pos;
 	vector size;
 	float angle;
-	bbox bbox;
+	bm::bbox bbox;
 };
 

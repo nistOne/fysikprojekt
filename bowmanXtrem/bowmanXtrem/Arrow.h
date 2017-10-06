@@ -1,10 +1,10 @@
 #pragma once
-#include "Globals.h"
 #include "Object.h"
 
 class Arrow : public Obj
 {
 public:
+
 	Arrow(vector pos, vector size, float angle, float spd);
 	~Arrow();
 		
@@ -16,5 +16,7 @@ public:
 private:
 	vector dir;
 	float spd;
+
+	bool collideWith(bm::bbox box);
 };
 

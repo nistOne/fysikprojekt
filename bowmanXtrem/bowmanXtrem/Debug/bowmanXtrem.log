@@ -1,3 +1,4 @@
-﻿  Object.cpp
-  bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.exe
-  bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)
+﻿  Main.cpp
+c:\users\maip15\source\repos\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.h(12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  bowmanXtrem.vcxproj -> C:\Users\maip15\Source\Repos\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.exe
+  bowmanXtrem.vcxproj -> C:\Users\maip15\Source\Repos\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)
