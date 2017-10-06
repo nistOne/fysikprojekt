@@ -5,35 +5,51 @@ Obj::Obj(vector pos, vector size, float angle)
 {
 	this->pos = pos;
 	this->size = size;
+	this->angle = angle;
+
+	vector vec_up(0.f, -1.f);
+	vector vec_right(1.f, 0.f);
+
+	if (this->angle != 0)
+	{
+		vec_up.rotateLeft(this->angle);
+		vec_right.rotateLeft(this->angle);
+	}
 
 
 	//vector rot = vector((size.x*cos(angle)), (size.y*sin(angle)));
 	vector rot = size;
 
-	bbox.pos1 = pos + (vector(-rot.x, -rot.y));
-	bbox.pos2 = pos + (vector(rot.x, -rot.y));
-	bbox.pos3 = pos + (vector(-rot.x, rot.y));
-	bbox.pos4 = pos + (vector(rot.x, rot.y));
+	//bbox.pos1 = this->pos + (vector(-rot.x, -rot.y));
+	//bbox.pos2 = this->pos + (vector(rot.x, -rot.y));
+	//bbox.pos3 = this->pos + (vector(-rot.x, rot.y));
+	//bbox.pos4 = this->pos + (vector(rot.x, rot.y));
 
-	this->shape.setPosition(sf::Vector2f(bbox.pos1.x, bbox.pos1.y));
-	this->shape.setRotation(angle);
-	this->shape.setSize(sf::Vector2f(2*size.x, 2*size.y));
+	bbox.pos1 = this->pos - vec_right * this->size.x + vec_up * this->size.y;
+	bbox.pos2 = this->pos + vec_right * this->size.x + vec_up * this->size.y;
+	bbox.pos3 = this->pos - vec_right * this->size.x - vec_up * this->size.y;
+	bbox.pos4 = this->pos + vec_right * this->size.x - vec_up * this->size.y;
+
+	//shape.setPosition(bbox.pos1.asVector2f());
+	shape.setPosition(this->pos.asVector2f());
+	shape.setOrigin(this->size.x/2, this->size.y/2);
+	shape.setRotation(this->angle);
+	shape.setSize(this->size.asVector2f());
+	shape.setFillColor(sf::Color::Red);
 }
 
 Obj::~Obj()
 {
+
 }
 
 void Obj::draw()
 {
 	gWindow->draw(this->shape);
+	this->draw_debug();
 }
 
-void Obj::update()
-{
-}
-
-void Obj::setRenderTarget(sf::RenderTarget * window)
+void Obj::update(float t)
 {
 
 }

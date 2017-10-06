@@ -9,18 +9,19 @@ public:
 	~Obj();
 
 	virtual void draw();
-	virtual void update();
-	void setRenderTarget(sf::RenderTarget * window);
+	virtual void update(float t);
+
+	virtual void draw_debug() {}
 
 protected:
 
-	sf::RenderTarget * window;
+	//sf::RenderTarget * window;
 
 	sf::RectangleShape shape;
 
 	vector pos;
 	vector size;
 	float angle;
-	bm::bbox bbox;
+	bm::boundingBox bbox;
 };
 

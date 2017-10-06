@@ -13,11 +13,11 @@ Arrow::~Arrow()
 {
 }
 
-void Arrow::update(int t)
+void Arrow::update(float t) 
 {
 	vector pre = pos;
 
-	float a = 0.000001;
+	float a = 0.000001f;
 
 	vector res;
 	res.x = dir.x * spd;
@@ -33,7 +33,7 @@ void Arrow::update(int t)
 
 }
 
-bool Arrow::collideWith(bm::bbox box)
+bool Arrow::collideWith(bm::boundingBox box)
 {
 	/*
 	*	NOTE:	This function uses the term "plane" to describe

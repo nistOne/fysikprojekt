@@ -1,4 +1,13 @@
-﻿  Main.cpp
-c:\users\maip15\source\repos\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.h(12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+﻿  Arrow.cpp
+  Generating Code...
+  Compiling...
+  Wall.cpp
+  ObjectHandler.cpp
+  Object.cpp
+  Fan.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Main.cpp
+  Game.cpp
   bowmanXtrem.vcxproj -> C:\Users\maip15\Source\Repos\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.exe
   bowmanXtrem.vcxproj -> C:\Users\maip15\Source\Repos\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)
