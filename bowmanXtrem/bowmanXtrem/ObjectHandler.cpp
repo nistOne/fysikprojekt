@@ -22,6 +22,11 @@ void ObjectHandler::draw()
 	{
 		dynObjects.at(i).draw();
 	}
+
+	for (unsigned int i = 0; i < fans.size(); i++)
+	{
+		fans[i].draw();
+	}
 }
 
 void ObjectHandler::update(float t)
@@ -37,7 +42,7 @@ void ObjectHandler::addWall(vector pos, vector size, float angle)
 
 void ObjectHandler::addFan(vector pos, vector size, float angle, float velocity)
 {
-	statObjects.push_back(Fan(pos, size, angle, velocity));
+	fans.push_back(Fan(pos, size, angle, velocity));
 }
 
 void ObjectHandler::shootArrow(float angle, float spd)

@@ -2,6 +2,7 @@
 #include <Vector>
 #include "Object.h"
 #include "Arrow.h"
+#include "Fan.h"
 
 class ObjectHandler
 {
@@ -18,6 +19,8 @@ public:
 private:
 	std::vector<Obj> statObjects;
 	std::vector<Arrow> dynObjects;
+
+	std::vector<Fan> fans;
 
 	std::vector<Obj> objects;
 };

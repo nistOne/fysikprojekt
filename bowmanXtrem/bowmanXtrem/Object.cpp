@@ -12,8 +12,8 @@ Obj::Obj(vector pos, vector size, float angle)
 
 	if (this->angle != 0)
 	{
-		vec_up.rotateLeft(this->angle);
-		vec_right.rotateLeft(this->angle);
+		vec_up.rotate(this->angle);
+		vec_right.rotate(this->angle);
 	}
 
 
@@ -25,10 +25,10 @@ Obj::Obj(vector pos, vector size, float angle)
 	//bbox.pos3 = this->pos + (vector(-rot.x, rot.y));
 	//bbox.pos4 = this->pos + (vector(rot.x, rot.y));
 
-	bbox.pos1 = this->pos - vec_right * this->size.x + vec_up * this->size.y;
-	bbox.pos2 = this->pos + vec_right * this->size.x + vec_up * this->size.y;
-	bbox.pos3 = this->pos - vec_right * this->size.x - vec_up * this->size.y;
-	bbox.pos4 = this->pos + vec_right * this->size.x - vec_up * this->size.y;
+	bbox.pos1 = this->pos - vec_right * this->size.x/2 + vec_up * this->size.y/2;
+	bbox.pos2 = this->pos + vec_right * this->size.x/2 + vec_up * this->size.y/2;
+	bbox.pos3 = this->pos - vec_right * this->size.x/2 - vec_up * this->size.y/2;
+	bbox.pos4 = this->pos + vec_right * this->size.x/2 - vec_up * this->size.y/2;
 
 	//shape.setPosition(bbox.pos1.asVector2f());
 	shape.setPosition(this->pos.asVector2f());
@@ -46,7 +46,7 @@ Obj::~Obj()
 void Obj::draw()
 {
 	gWindow->draw(this->shape);
-	this->draw_debug();
+	draw_debug();
 }
 
 void Obj::update(float t)

@@ -17,5 +17,5 @@ public:
 
 	void drawArea();
 
-	virtual void draw_debug() { drawArea(); std::cout << "DEBUG" << std::endl; }
+	virtual void draw_debug() { drawArea(); }
 };

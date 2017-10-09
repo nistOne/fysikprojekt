@@ -61,10 +61,14 @@ struct vector
 		return ret;
 	}
 
-	void rotateLeft(float angle)
+	void rotate(float angle)
 	{
-		x = x*cos(angle) - y*sin(angle);
-		y = x*sin(angle) + y*cos(angle);
+		angle = angle * PAJ / 180;
+		float tempX = x*cos(angle) - y*sin(angle);
+		float tempY = x*sin(angle) + y*cos(angle);
+
+		x = tempX;
+		y = tempY;
 	}
 
 	float length()

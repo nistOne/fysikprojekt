@@ -22,8 +22,8 @@ void Game::gameLoop()
 		sf::Event event;
 		while (gWindow->pollEvent(event))
 		{
-			if (event.key.code == sf::Keyboard::Escape)
-				gWindow->close();
+			//if (event.key.code == sf::Keyboard::Escape)
+			//	gWindow->close();
 
 			if (event.type == sf::Event::Closed)
 				gWindow->close();
@@ -54,5 +54,5 @@ void Game::makeWorld()
 
 void Game::debug_fan()
 {
-	objHandler.addFan(vector(SCREEN_WIDTH/2.f, SCREEN_HEIGHT/2.f), vector(100.f, 100.f), 45.f, 50.f);
+	objHandler.addFan(vector(SCREEN_WIDTH/2.f, SCREEN_HEIGHT/2.f), vector(100.f, 50.f), 30.f, 50.f);
 }
