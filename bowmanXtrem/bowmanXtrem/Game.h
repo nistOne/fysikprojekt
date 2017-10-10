@@ -2,6 +2,8 @@
 #include "Globals.h"
 #include "ObjectHandler.h"
 
+#define FPS 60
+
 class Game
 {
 public:
@@ -16,7 +18,7 @@ private:
 	ObjectHandler objHandler;
 	bool run = true;
 
-	int t = 0;
+	float t = 0;
 
 	void makeWorld();
 };
