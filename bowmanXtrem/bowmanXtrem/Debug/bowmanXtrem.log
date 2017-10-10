@@ -1,24 +1,7 @@
-﻿  Wall.cpp
-  ObjectHandler.cpp
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\arrow.h(12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\objecthandler.cpp(15): warning C4018: '<': signed/unsigned mismatch
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\objecthandler.cpp(20): warning C4018: '<': signed/unsigned mismatch
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\objecthandler.cpp(33): warning C4018: '<': signed/unsigned mismatch
-  Object.cpp
-  Main.cpp
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\arrow.h(12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-  Game.cpp
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\arrow.h(12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\game.cpp(50): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\game.cpp(51): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\game.cpp(52): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\game.cpp(54): warning C4305: 'argument': truncation from 'double' to 'float'
-  Arrow.cpp
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\arrow.h(12): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\manv15\source\repos\fysikprojekt2\bowmanxtrem\bowmanxtrem\arrow.cpp(20): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  Window.cpp
-  LINK : C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.exe not found or not built by the last incremental link; performing full link
-  bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.exe
-  bowmanXtrem.vcxproj -> C:\Users\manv15\Source\Repos\fysikprojekt2\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)
+﻿  Arrow.cpp
+c:\users\hampus\source\repos\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.h(15): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\hampus\source\repos\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.cpp(11): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\hampus\source\repos\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.cpp(12): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\hampus\source\repos\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.cpp(34): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  bowmanXtrem.vcxproj -> C:\Users\Hampus\Source\Repos\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.exe
+  bowmanXtrem.vcxproj -> C:\Users\Hampus\Source\Repos\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)
