@@ -10,9 +10,9 @@ public:
 	~ObjectHandler();
 
 	void draw();
-	void update(int t);
+	void update(float t);
 	void addWall(vector pos, vector size, float angle);
-	void shootArrow(float angle, float spd);
+	void shootArrow(float angle, vector spd);
 
 private:
 	std::vector<Obj> statObjects;

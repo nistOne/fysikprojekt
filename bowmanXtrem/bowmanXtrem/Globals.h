@@ -6,7 +6,7 @@
 #define SCREEN_WIDTH_MIDDLE SCREEN_WIDTH/2 
 #define SCREEN_HEIGHT_MIDDLE SCREEN_HEIGHT/2 
 
-#define SPEED 0.02
+#define SPEED 10
 
 #define PAJ 3.14
 
