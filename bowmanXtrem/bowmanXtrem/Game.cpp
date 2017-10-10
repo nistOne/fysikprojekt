@@ -29,10 +29,12 @@ void Game::gameLoop()
 			if (event.key.code == sf::Keyboard::Escape)
 				gWindow->close();
 
-			//if (event.type == sf::event::closed)
-			//	gwindow->close();
+			if (event.key.code == sf::Keyboard::R)
+				objHandler.shootArrow(7 * PAJ / 4, vector(100, -50));
 		}
-		t = clock.getElapsedTime().asSeconds();
+		
+		this->t = clock.getElapsedTime().asSeconds();
+
 		if (t >= 1.0f / FPS)
 		{
 			
@@ -46,9 +48,8 @@ void Game::gameLoop()
 }
 
 
-void Game::restart()
+void Game::restart(sf::Clock& clock)
 {
-
 }
 
 void Game::makeWorld()

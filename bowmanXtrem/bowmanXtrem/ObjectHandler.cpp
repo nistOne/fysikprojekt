@@ -44,5 +44,8 @@ void ObjectHandler::addWall(vector pos, vector size, float angle)
 
 void ObjectHandler::shootArrow(float angle, vector spd)
 {
+	if(dynObjects.size() > 0)
+		dynObjects.pop_back();
 	dynObjects.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(20,2), angle, spd));
+
 }
