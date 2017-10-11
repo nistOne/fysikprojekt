@@ -6,9 +6,11 @@
 #define SCREEN_WIDTH_MIDDLE SCREEN_WIDTH/2 
 #define SCREEN_HEIGHT_MIDDLE SCREEN_HEIGHT/2 
 
-#define SPEED 10
 
-#define PAJ 3.14
+#define PAJ 3.141592f
+#define SPEED 10.f
+
+#define DEBUG false
 
 struct vector
 {
@@ -35,12 +37,9 @@ struct vector
 		return temp;
 	};
 
-	vector operator* (vector vec2)
+	vector operator* (float scalar)
 	{
-		vector temp;
-		temp.x = this->x * vec2.x;
-		temp.y = this->y * vec2.y;
-		return temp;
+		return vector(x*scalar, y*scalar);
 	}
 
 	vector operator/ (float denominate)
@@ -51,7 +50,7 @@ struct vector
 		return temp;
 	}
 
-	void scale(float scalar)
+	vector scale(float scalar)
 	{
 		this->x *= scalar;
 		this->y *= scalar;
@@ -64,14 +63,30 @@ struct vector
 		return ret;
 	}
 
+	void rotate(float angle)
+	{
+		angle = angle * PAJ / 180;
+		float tempX = x*cos(angle) - y*sin(angle);
+		float tempY = x*sin(angle) + y*cos(angle);
+
+		x = tempX;
+		y = tempY;
+	}
+
 	float length()
 	{
 		return std::sqrt( (this->x * this->x) + (this->y * this->y) );
 	}
+
+	sf::Vector2f asVector2f()
+	{
+		return sf::Vector2f(x, y);
+	}
 };
 
 namespace bm {
-	struct bbox
+
+	struct boundingBox
 	{
 		vector pos1;
 		vector pos2;
