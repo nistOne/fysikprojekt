@@ -18,6 +18,6 @@ public:
 
 private:
 	std::vector<Obj> statObjects;
-	std::vector<Arrow> dynObjects;
+	std::vector<Arrow> arrows;
 	std::vector<Fan> fans;
 };
