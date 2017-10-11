@@ -56,7 +56,7 @@ void Arrow::update(float t)
 	*/
 }
 
-bool Arrow::collideWith(bm::bbox box)
+bool Arrow::collideWith(bm::boundingBox box)
 {
 	/*
 	*	NOTE:	This function uses the term "plane" to describe

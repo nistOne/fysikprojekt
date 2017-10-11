@@ -23,5 +23,6 @@ private:
 	float resetT = 0;
 
 	void makeWorld();
+	void debug_fan();
 };
 

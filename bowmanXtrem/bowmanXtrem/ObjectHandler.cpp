@@ -1,6 +1,7 @@
 #include "ObjectHandler.h"
 #include "Wall.h"
 #include "Arrow.h"
+#include "Fan.h"
 
 ObjectHandler::ObjectHandler()
 {
@@ -12,17 +13,19 @@ ObjectHandler::~ObjectHandler()
 
 void ObjectHandler::draw()
 {
-	for (int i = 0; i < statObjects.size(); i++)
+	for (unsigned int i = 0; i < statObjects.size(); i++)
 	{
 		statObjects.at(i).draw();
 	}
 
-	for (int i = 0; i < dynObjects.size(); i++)
+	for (unsigned int i = 0; i < dynObjects.size(); i++)
 	{
 		dynObjects.at(i).draw();
 	}
-}
 
+	for (unsigned int i = 0; i < fans.size(); i++)
+	{
+		fans[i].draw();
 void ObjectHandler::update(float t)
 {
 	Arrow* temp = dynamic_cast<Arrow*>(&dynObjects.at(0));
@@ -30,11 +33,12 @@ void ObjectHandler::update(float t)
 	{
 		temp->update(t);
 	}
-	for (int i = 0; i < dynObjects.size(); i++)
-	{
-		dynObjects.at(i).update(t);
-	}
+}
 
+void ObjectHandler::update(float t)
+{
+	for (unsigned int i = 0; i < dynObjects.size(); i++)
+		this->dynObjects[i].update(t);
 }
 
 void ObjectHandler::addWall(vector pos, vector size, float angle)
@@ -42,8 +46,14 @@ void ObjectHandler::addWall(vector pos, vector size, float angle)
 	statObjects.push_back(Wall(pos, size, angle));
 }
 
-void ObjectHandler::shootArrow(float angle, vector spd)
+void ObjectHandler::addFan(vector pos, vector size, float angle, float velocity)
 {
+	fans.push_back(Fan(pos, size, angle, velocity));
+}
+
+void ObjectHandler::shootArrow(float angle, float spd)
+{
+	dynObjects.push_back(Arrow(vector(10, SCREEN_HEIGHT / 2), vector(20, 2), angle, spd));
 	if(dynObjects.size() > 0)
 		dynObjects.pop_back();
 	dynObjects.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(20,2), angle, spd));
