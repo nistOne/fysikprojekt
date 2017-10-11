@@ -26,6 +26,10 @@ void ObjectHandler::draw()
 	for (unsigned int i = 0; i < fans.size(); i++)
 	{
 		fans[i].draw();
+
+	}
+}
+
 void ObjectHandler::update(float t)
 {
 	Arrow* temp = dynamic_cast<Arrow*>(&dynObjects.at(0));
@@ -33,10 +37,7 @@ void ObjectHandler::update(float t)
 	{
 		temp->update(t);
 	}
-}
 
-void ObjectHandler::update(float t)
-{
 	for (unsigned int i = 0; i < dynObjects.size(); i++)
 		this->dynObjects[i].update(t);
 }
@@ -51,9 +52,9 @@ void ObjectHandler::addFan(vector pos, vector size, float angle, float velocity)
 	fans.push_back(Fan(pos, size, angle, velocity));
 }
 
-void ObjectHandler::shootArrow(float angle, float spd)
+void ObjectHandler::shootArrow(float angle, vector spd)
 {
-	dynObjects.push_back(Arrow(vector(10, SCREEN_HEIGHT / 2), vector(20, 2), angle, spd));
+	//dynObjects.push_back(Arrow(vector(10, SCREEN_HEIGHT / 2), vector(20, 2), angle, spd));
 	if(dynObjects.size() > 0)
 		dynObjects.pop_back();
 	dynObjects.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(20,2), angle, spd));

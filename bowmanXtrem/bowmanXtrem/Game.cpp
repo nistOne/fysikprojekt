@@ -16,8 +16,8 @@ Game::~Game()
 void Game::gameLoop()
 {
 
-	//makeWorld();
-	debug_fan();
+	makeWorld();
+	//debug_fan();
 
 	sf::Clock clock;
 
