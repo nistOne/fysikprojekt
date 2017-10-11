@@ -11,8 +11,6 @@ public:
 	virtual void draw();
 	virtual void update(float t);
 
-	virtual void draw_debug() {}
-
 protected:
 
 	//sf::RenderTarget * window;

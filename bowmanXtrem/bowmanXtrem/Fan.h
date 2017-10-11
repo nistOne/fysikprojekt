@@ -17,5 +17,5 @@ public:
 
 	void drawArea();
 
-	virtual void draw_debug() { drawArea(); }
+	virtual void draw();
 };

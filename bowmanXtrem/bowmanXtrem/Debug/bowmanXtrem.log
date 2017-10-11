@@ -1,12 +1,6 @@
-﻿  Arrow.cpp
-  Generating Code...
-  Compiling...
-  Object.cpp
-  Fan.cpp
+﻿  ObjectHandler.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
-  Wall.cpp
-  ObjectHandler.cpp
   Main.cpp
   Game.cpp
   bowmanXtrem.vcxproj -> C:\Users\macka\Source\Repos\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.exe

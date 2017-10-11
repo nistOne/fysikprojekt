@@ -19,8 +19,5 @@ public:
 private:
 	std::vector<Obj> statObjects;
 	std::vector<Arrow> dynObjects;
-
 	std::vector<Fan> fans;
-
-	std::vector<Obj> objects;
 };

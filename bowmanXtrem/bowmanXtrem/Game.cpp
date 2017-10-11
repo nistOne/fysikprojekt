@@ -1,6 +1,8 @@
 #include "Game.h"
 #include "Window.h"
 
+#include <iostream>
+
 Game::Game()
 {
 	gWindow = new sf::RenderWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
@@ -54,5 +56,5 @@ void Game::makeWorld()
 
 void Game::debug_fan()
 {
-	objHandler.addFan(vector(SCREEN_WIDTH/2.f, SCREEN_HEIGHT/2.f), vector(100.f, 50.f), 30.f, 50.f);
+	objHandler.addFan(vector(SCREEN_WIDTH/4.f, SCREEN_HEIGHT*3.f/4.f), vector(150.f, 20.f), 15.f, 50.f);
 }

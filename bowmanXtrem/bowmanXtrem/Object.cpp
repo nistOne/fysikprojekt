@@ -46,7 +46,6 @@ Obj::~Obj()
 void Obj::draw()
 {
 	gWindow->draw(this->shape);
-	draw_debug();
 }
 
 void Obj::update(float t)

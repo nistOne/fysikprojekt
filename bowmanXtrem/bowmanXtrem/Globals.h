@@ -7,8 +7,9 @@
 #define SCREEN_HEIGHT_MIDDLE SCREEN_HEIGHT/2 
 
 #define SPEED 0.02f
-
 #define PAJ 3.141592f
+
+#define DEBUG false
 
 struct vector
 {
