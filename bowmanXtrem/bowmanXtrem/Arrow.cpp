@@ -3,13 +3,15 @@
 
 Arrow::Arrow(vector pos, vector size, float angle, vector spd) : Obj(pos, size, angle)
 {
-
 	this->dir = vector(cos(angle), sin(angle));
 	this->pos = pos;
 	this->speed = spd;
 	this->acc.x = 0.0;
 	this->acc.y = GRAVITY;
-	this->A = PAJ * 0.395 * 0.395; //0.395 radie på pilen
+	this->A = PAJ * 0.005 * 0.005; //0.005 radius of a medieval arrow.
+	this->length = 0.80; //Length of a medieval arrow ranged from 70-90cm depending on the bow.
+	this->weight = 0.340; //10.8 gr/inch
+	this->Fd = 0;
 }
 
 Arrow::~Arrow()
@@ -18,42 +20,29 @@ Arrow::~Arrow()
 
 void Arrow::update(float t)
 {
-
 	//Update arrow position
-	this->pos.x = this->pos.x + this->speed.x * t;
-	this->pos.y = this->pos.y + this->speed.y * t;
+	this->pos = this->pos + this->speed * t;
 
 	//Update arrow speed
-	this->speed.x = this->speed.x + this->acc.x * t;
-	this->speed.y = this->speed.y + this->acc.y * t;
+	this->speed = this->speed + this->acc * t;
 
 	//Update arrow direction
 	this->dir = this->speed.normalize();
 
 	//Update arrow acceleration
-	this->acc.x = this->acc.x + (-1.5) * t;
+	this->acc = this->acc + (this->sumForceArrow / this->weight) * t;
+
+	//Update the wind resistance
+	//According to the textbook p.137 Fd for a medival war arrow => Fd = c*v^2 
+	//Where c = 0.0001 N-s^2/m^2
+	this->Fd = 0.0001 * this->speed.length() * this->speed.length();
+
+	//Update arrows sum force
+	this->sumForceArrow = vector(0, GRAVITY * this->weight) + (this->dir * (Fd * -1));
 
 	//Set arrow position and rotate the texture
 	this->shape.setRotation(getAngle());
 	this->shape.setPosition(sf::Vector2f(pos.x, pos.y));
-
-
-	/*
-	vector pre = pos;
-
-	float a = 0.000001;
-
-	vector res;
-	res.x = dir.x * spd;
-	res.y = dir.y * spd;
-
-	pos = pos + res;
-
-	pos.y = SCREEN_HEIGHT_MIDDLE + res.y*t + ((a*t*t) / 2);
-
-	this->shape.setRotation(getAngle());
-	this->shape.setPosition(sf::Vector2f(pos.x, pos.y));
-	*/
 }
 
 bool Arrow::collideWith(bm::boundingBox box)

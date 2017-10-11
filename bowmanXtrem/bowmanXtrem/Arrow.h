@@ -25,8 +25,14 @@ private:
 	vector speed;
 	vector acc;
 	vector xAxis = (1.0f, 0.0f);
+	vector sumForceArrow;
+	
 	float A;
 	float Cd;
+	float length;
+	float Fd;
+	float weight;
+
 
 };
 
