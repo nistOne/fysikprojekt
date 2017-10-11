@@ -32,4 +32,8 @@
 *.app
 
 # Custom files
-Browse.VC.opendb
+# Browse.VC.opendb
+*.opendb
+*.db
+*.suo
+
