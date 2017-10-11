@@ -1,3 +1,9 @@
-﻿  ObjectHandler.cpp
-  bowmanXtrem.vcxproj -> C:\Users\macka\Source\Repos\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.exe
-  bowmanXtrem.vcxproj -> C:\Users\macka\Source\Repos\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)
+﻿  Arrow.cpp
+c:\users\hampus\documents\github\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.cpp(10): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\hampus\documents\github\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.cpp(11): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\hampus\documents\github\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.cpp(12): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\hampus\documents\github\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.cpp(13): warning C4305: '=': truncation from 'double' to 'float'
+c:\users\hampus\documents\github\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.cpp(38): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\hampus\documents\github\fysikprojekt\bowmanxtrem\bowmanxtrem\arrow.cpp(41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  bowmanXtrem.vcxproj -> C:\Users\Hampus\Documents\GitHub\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.exe
+  bowmanXtrem.vcxproj -> C:\Users\Hampus\Documents\GitHub\fysikprojekt\bowmanXtrem\Debug\bowmanXtrem.pdb (Partial PDB)
