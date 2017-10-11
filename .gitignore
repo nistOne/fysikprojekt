@@ -33,3 +33,10 @@
 
 # Custom files
 Browse.VC.opendb
+
+
+##Fix for conflict errors
+*.db
+*.log
+*.pdb
+*.ilk

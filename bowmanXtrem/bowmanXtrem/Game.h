@@ -2,6 +2,8 @@
 #include "Globals.h"
 #include "ObjectHandler.h"
 
+#define FPS 60
+
 class Game
 {
 public:
@@ -11,12 +13,14 @@ public:
 	void gameLoop();
 	void stopLoop() { this->run = false; };
 
-	void restart();
+	void restart(sf::Clock& clock);
 private:
 	ObjectHandler objHandler;
 	bool run = true;
+	bool reset = false;
 
-	int t = 0;
+	float t = 0;
+	float resetT = 0;
 
 	void makeWorld();
 };
