@@ -1,6 +1,8 @@
 #include "Game.h"
 #include "Window.h"
 
+#include <iostream>
+
 Game::Game()
 {
 	gWindow = new sf::RenderWindow(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "SFML works!");
@@ -15,24 +17,27 @@ void Game::gameLoop()
 {
 
 	makeWorld();
+	//debug_fan();
 
 	sf::Clock clock;
 
-	//sf::CircleShape shape(100.f);
-	//shape.setFillColor(sf::Color::Red);
 	
 	while (gWindow->isOpen() && this->run)
 	{
 		sf::Event event;
 		while (gWindow->pollEvent(event))
 		{
-			if (event.key.code == sf::Keyboard::Escape)
-				gWindow->close();
+			//if (event.key.code == sf::Keyboard::Escape)
+			//	gWindow->close();
 
-			//if (event.type == sf::event::closed)
-			//	gwindow->close();
+			if (event.key.code == sf::Keyboard::R)
+				objHandler.shootArrow(7 * PAJ / 4, vector(100, -50));
+			if (event.type == sf::Event::Closed)
+				gWindow->close();
 		}
-		t = clock.getElapsedTime().asSeconds();
+		
+		this->t = clock.getElapsedTime().asSeconds();
+
 		if (t >= 1.0f / FPS)
 		{
 			
@@ -46,16 +51,20 @@ void Game::gameLoop()
 }
 
 
-void Game::restart()
+void Game::restart(sf::Clock& clock)
 {
-
 }
 
 void Game::makeWorld()
 {
-	objHandler.addWall(vector(0, SCREEN_HEIGHT*2/3), vector(SCREEN_WIDTH/2.7, SCREEN_HEIGHT/18), 0);
-	objHandler.addWall(vector(SCREEN_WIDTH, SCREEN_HEIGHT * 2 / 3), vector(SCREEN_WIDTH/2.7, SCREEN_HEIGHT / 18), 0);
-	objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2 / 3) + SCREEN_HEIGHT / 4.5), vector(SCREEN_WIDTH/2, SCREEN_HEIGHT / 5.9), 0);
+	objHandler.addWall(vector(0.f, SCREEN_HEIGHT*2.f/3.f), vector(SCREEN_WIDTH/2.7f, SCREEN_HEIGHT/18.f), 0.f);
+	objHandler.addWall(vector(SCREEN_WIDTH, SCREEN_HEIGHT * 2.f / 3.f), vector(SCREEN_WIDTH/2.7f, SCREEN_HEIGHT / 18.f), 0.f);
+	objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(SCREEN_WIDTH/2.f, SCREEN_HEIGHT / 5.9f), 0.f);
 
-	objHandler.shootArrow(7*PAJ/4, vector(100, -50));
+	objHandler.shootArrow(7.f*PAJ/4.f, SPEED);
+}
+
+void Game::debug_fan()
+{
+	objHandler.addFan(vector(SCREEN_WIDTH/4.f, SCREEN_HEIGHT*3.f/4.f), vector(150.f, 20.f), 15.f, 50.f);
 }
