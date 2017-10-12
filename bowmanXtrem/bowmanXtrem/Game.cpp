@@ -29,6 +29,24 @@ void Game::gameLoop()
 		{
 			//if (event.key.code == sf::Keyboard::Escape)
 			//	gWindow->close();
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				if (!aim)
+				{
+				aim = true;
+				this->firstAim = vector(mouseX, mouseY); 
+				}
+
+				vector shootVector = (vector(mouseX, mouseY) - this->firstAim);
+				objHandler.updateAimLine(firstAim, shootVector)
+			}
+			else if (aim)
+			{
+				this->secondAim = vector(mouseX, mouseY);
+				vector shootVector = (this->secondAim - this->firstAim);
+				objHandler.shootArrow(shootVector.angle(), shootVector.scale(1.0f));
+				aim = false;
+			}
 
 			if (event.key.code == sf::Keyboard::R)
 				objHandler.shootArrow(7 * PAJ / 4, vector(100, -50));

@@ -11,7 +11,7 @@ ObjectHandler::~ObjectHandler()
 {
 }
 
-void ObjectHandler::draw()
+void ObjectHandler::draw(bool aim)
 {
 	for (unsigned int i = 0; i < statObjects.size(); i++)
 	{
@@ -25,9 +25,11 @@ void ObjectHandler::draw()
 
 	for (unsigned int i = 0; i < fans.size(); i++)
 	{
-		fans[i].draw();
-
+		fans[i].draw(); 
 	}
+
+	if (aim)
+		aimLine[0].draw();
 }
 
 void ObjectHandler::update(float t)
@@ -59,4 +61,11 @@ void ObjectHandler::shootArrow(float angle, vector spd)
 		arrows.pop_back();
 	arrows.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(20,2), angle, spd));
 
+}
+
+void ObjectHandler::updateAimLine(vector start, vector vec)
+{
+	if(aimLine.size() > 0)
+		arrows.pop_back();
+	aimLine.push_back(Wall(start, vec.length, vec.angle()));
 }

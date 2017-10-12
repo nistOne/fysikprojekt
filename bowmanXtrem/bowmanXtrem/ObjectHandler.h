@@ -10,14 +10,16 @@ public:
 	ObjectHandler();
 	~ObjectHandler();
 
-	void draw();
+	void draw(bool aim);
 	void update(float t);
 	void addWall(vector pos, vector size, float angle);
 	void addFan(vector pos, vector size, float angle, float velocity);
 	void shootArrow(float angle, vector spd);
+	void updateAimLine(vector start, vector vec);
 
 private:
 	std::vector<Obj> statObjects;
 	std::vector<Arrow> arrows;
 	std::vector<Fan> fans;
+	std::vector<Obj> aimLine;
 };
