@@ -27,11 +27,15 @@ void Game::gameLoop()
 		sf::Event event;
 		while (gWindow->pollEvent(event))
 		{
-			//if (event.key.code == sf::Keyboard::Escape)
-			//	gWindow->close();
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
+				gWindow->close();
 
-			if (event.key.code == sf::Keyboard::R)
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
+			{
 				objHandler.shootArrow(7 * PAJ / 4, vector(100, -50));
+				objHandler.reset();
+			}
+
 			if (event.type == sf::Event::Closed)
 				gWindow->close();
 		}
@@ -61,7 +65,8 @@ void Game::makeWorld()
 	objHandler.addWall(vector(SCREEN_WIDTH, SCREEN_HEIGHT * 2.f / 3.f), vector(SCREEN_WIDTH/2.7f, SCREEN_HEIGHT / 18.f), 0.f);
 	objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(SCREEN_WIDTH/2.f, SCREEN_HEIGHT / 5.9f), 0.f);
 
-	objHandler.shootArrow(7.f*PAJ/4.f, SPEED);
+	//objHandler.shootArrow(7.f*PAJ / 4.f, SPEED);
+	objHandler.shootArrow(7 * PAJ / 4, vector(70, 10));
 }
 
 void Game::debug_fan()

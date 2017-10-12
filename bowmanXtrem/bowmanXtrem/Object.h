@@ -10,10 +10,9 @@ public:
 
 	virtual void draw();
 	virtual void update(float t);
+	bm::boundingBox getBoundingBox();
 
 protected:
-
-	//sf::RenderTarget * window;
 
 	sf::RectangleShape shape;
 
