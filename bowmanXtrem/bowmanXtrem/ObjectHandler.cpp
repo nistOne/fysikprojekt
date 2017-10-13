@@ -3,6 +3,8 @@
 #include "Arrow.h"
 #include "Fan.h"
 
+//#include <iostream>
+
 ObjectHandler::ObjectHandler()
 {
 	aimLine.push_back(Wall(
@@ -49,6 +51,18 @@ void ObjectHandler::update(float t)
 				this->arrows[i].endFlight();
 			}
 		}
+
+		//for (unsigned int j = 0; j < fans.size(); j++)
+		//{
+		//	vector temp = collisionArrow_Fan(this->arrows[i], fans[j]);
+		//	if (temp != vector(0.f, 0.f))
+		//	{
+		//		std::cout << "COLLISION DETECTED!" << std::endl;
+		//	}
+		//	else
+		//		std::cout << "Lame.." << std::endl;
+		//}
+
 		this->arrows[i].update(t, vector(0,0));
 	}
 }

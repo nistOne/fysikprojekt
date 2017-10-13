@@ -57,6 +57,16 @@ struct vector
 		return temp;
 	}
 
+	bool operator!=(vector vec)
+	{
+		return this->x != vec.x || this->y != vec.y;
+	}
+
+	bool operator==(vector vec)
+	{
+		return this->x == vec.x && this->y == vec.y;
+	}
+
 	vector scale(float scalar)
 	{
 		this->x *= scalar;
