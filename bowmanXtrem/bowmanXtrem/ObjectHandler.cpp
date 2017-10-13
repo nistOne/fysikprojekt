@@ -48,7 +48,7 @@ void ObjectHandler::update(float t)
 				this->arrows[i].endFlight();
 			}
 		}
-		this->arrows[i].update(t);
+		this->arrows[i].update(t, vector(0,0));
 	}
 }
 
