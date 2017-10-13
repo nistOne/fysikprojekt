@@ -50,7 +50,7 @@ void Game::gameLoop()
 
 			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
 			{
-				objHandler.shootArrow(7 * PAJ / 4, vector(100, -50));
+				objHandler.shootArrow(7 * PAJ / 4, vector(30, -20));
 				objHandler.reset();
 			}
 
