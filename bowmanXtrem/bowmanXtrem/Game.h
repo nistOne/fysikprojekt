@@ -17,7 +17,9 @@ public:
 private:
 	ObjectHandler objHandler;
 	bool run = true;
-	bool reset = false;
+	bool aim = false;
+
+	vector firstAim, secondAim;
 
 	float t = 0;
 	float resetT = 0;

@@ -1,6 +1,6 @@
 #pragma once
 #include <Vector>
-#include "Object.h"
+#include "Wall.h"
 #include "Arrow.h"
 #include "Fan.h"
 
@@ -11,18 +11,20 @@ public:
 	ObjectHandler();
 	~ObjectHandler();
 
-	void draw();
+	void draw(bool aim);
 	void update(float t);
 	void addWall(vector pos, vector size, float angle);
 	void addFan(vector pos, vector size, float angle, float velocity);
 	void shootArrow(float angle, vector spd);
+	void updateAimLine(vector start, vector vec);
 	void reset();
 
 	bool collisionArrow_BoundingBox(Arrow arrow, bm::boundingBox bbox);
 	vector collisionArrow_Fan(Arrow arrow, Fan fan);
 
 private:
-	std::vector<Obj> walls;
+	std::vector<Wall> walls;
+	//std::vector<Obj> walls;
 	std::vector<Arrow> arrows;
 	std::vector<Fan> fans;
 
@@ -36,4 +38,5 @@ private:
 		vector normal;	// Ortogonal to plane.
 		float length;	// Length from origo.
 	};
+	std::vector<Wall> aimLine;
 };

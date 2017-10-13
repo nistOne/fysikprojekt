@@ -78,6 +78,11 @@ struct vector
 		return std::sqrt( (this->x * this->x) + (this->y * this->y) );
 	}
 
+	float angle()
+	{
+		return atanf((this->y /this->x)) * 180 / PAJ;
+	}
+
 	sf::Vector2f asVector2f()
 	{
 		return sf::Vector2f(x, y);

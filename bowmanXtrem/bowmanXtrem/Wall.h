@@ -8,6 +8,7 @@ public:
 	~Wall();
 
 	virtual void draw_debug() {}
+	void editLine(vector pos, vector line);
 
 private:
 
