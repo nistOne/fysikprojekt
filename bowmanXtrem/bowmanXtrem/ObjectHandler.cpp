@@ -5,6 +5,10 @@
 
 ObjectHandler::ObjectHandler()
 {
+	aimLine.push_back(Wall(
+		vector(SCREEN_WIDTH_MIDDLE, SCREEN_HEIGHT_MIDDLE), 
+		vector(200, 10), 
+		0.0f));
 }
 
 ObjectHandler::~ObjectHandler()
@@ -28,20 +32,16 @@ void ObjectHandler::draw(bool aim)
 		fans[i].draw(); 
 	}
 
-	if (aim)
-		aimLine[0].draw();
+	if (true)
+		aimLine.front().draw();
 }
 
 void ObjectHandler::update(float t)
 {
-	Arrow* temp = dynamic_cast<Arrow*>(&arrows.at(0));
-	if (temp != nullptr)
-	{
-		temp->update(t);
-	}
-
+	
 	for (unsigned int i = 0; i < arrows.size(); i++)
 		this->arrows[i].update(t);
+
 }
 
 void ObjectHandler::addWall(vector pos, vector size, float angle)
@@ -65,7 +65,7 @@ void ObjectHandler::shootArrow(float angle, vector spd)
 
 void ObjectHandler::updateAimLine(vector start, vector vec)
 {
-	if(aimLine.size() > 0)
-		arrows.pop_back();
-	aimLine.push_back(Wall(start, vec.length, vec.angle()));
+	aimLine.front().editLine(start, vec);
+
+	//statObjects.front().editLine(start, vec);
 }

@@ -1,6 +1,6 @@
 #pragma once
 #include <Vector>
-#include "Object.h"
+#include "Wall.h"
 #include "Arrow.h"
 #include "Fan.h"
 
@@ -18,8 +18,8 @@ public:
 	void updateAimLine(vector start, vector vec);
 
 private:
-	std::vector<Obj> statObjects;
+	std::vector<Wall> statObjects;
 	std::vector<Arrow> arrows;
 	std::vector<Fan> fans;
-	std::vector<Obj> aimLine;
+	std::vector<Wall> aimLine;
 };
