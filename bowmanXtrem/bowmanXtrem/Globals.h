@@ -10,7 +10,7 @@
 #define PAJ 3.141592f
 #define SPEED 10.f
 
-#define DEBUG true
+#define DEBUG false
 
 struct vector
 {
