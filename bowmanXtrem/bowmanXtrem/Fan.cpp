@@ -21,6 +21,21 @@ Fan::Fan(vector pos, vector size, float angle, float velocity) : Obj(pos, size, 
 	
 	area.pos1 = area.pos3 + vec_up * 5000;
 	area.pos2 = area.pos4 + vec_up * 5000;
+
+	// Setup particle system
+	//this->pSystem.setEmitter(this->pos.asVector2f());
+	//this->pSystem.setFanUpVector(vec_up.asVector2f());
+	//this->pSystem.setFanRightVector(vec_right.asVector2f());
+	//this->pSystem.setFanVelocity(this->velocity);
+	//this->pSystem.setFanWidth(this->size.x);
+
+	this->pSystem.setFanData(
+		this->pos.asVector2f(),
+		vec_up.asVector2f(),
+		vec_right.asVector2f(),
+		this->velocity,
+		this->size.x
+	);
 }
 
 Fan::~Fan()
@@ -71,6 +86,12 @@ void Fan::draw()
 	if (DEBUG)
 		drawArea();
 
+	gWindow->draw(this->pSystem);
 
 	Obj::draw();
+}
+
+void Fan::update(float t)
+{
+	this->pSystem.update(t);
 }
