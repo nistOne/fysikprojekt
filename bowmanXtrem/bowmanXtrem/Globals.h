@@ -13,6 +13,7 @@
 #define SPEED 10.f
 
 #define DEBUG false
+#define SHOWWIND true
 
 struct vector
 {

@@ -60,12 +60,14 @@ void windParticleSystem::setFanData(
 	int limit;
 	if (particleCount > 100)
 		limit = sqrt(particleCount);
-	else
+	else if (particleCount > 50)
 		limit = particleCount;
+	else
+		limit = particleCount * 2;
 
 	for (unsigned int i = 0; i < limit; i++)
 	{
-		update(1);
+		update(1.5f);
 	}
 }
 

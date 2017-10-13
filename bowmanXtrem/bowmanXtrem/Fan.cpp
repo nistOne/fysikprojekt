@@ -86,7 +86,8 @@ void Fan::draw()
 	if (DEBUG)
 		drawArea();
 
-	gWindow->draw(this->pSystem);
+	if(SHOWWIND)
+		gWindow->draw(this->pSystem);
 
 	Obj::draw();
 }

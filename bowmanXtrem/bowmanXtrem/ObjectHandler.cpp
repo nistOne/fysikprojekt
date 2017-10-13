@@ -66,9 +66,12 @@ void ObjectHandler::update(float t)
 		this->arrows[i].update(t, vector(0,0));
 	}
 
-	for (unsigned int i = 0; i < fans.size(); i++)
+	if (SHOWWIND)
 	{
-		this->fans[i].update(t);
+		for (unsigned int i = 0; i < fans.size(); i++)
+		{
+			this->fans[i].update(t);
+		}
 	}
 }
 
