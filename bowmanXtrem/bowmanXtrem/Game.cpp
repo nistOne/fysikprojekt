@@ -27,8 +27,26 @@ void Game::gameLoop()
 		sf::Event event;
 		while (gWindow->pollEvent(event))
 		{
-			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
-				gWindow->close();
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				vector mousePos = vector(sf::Mouse::getPosition(*gWindow).x, sf::Mouse::getPosition(*gWindow).y);
+				if (this->aim == false)
+				{
+				aim = true;
+				this->firstAim = mousePos;
+				}
+
+				vector shootVector = (this->firstAim - mousePos);
+				if (shootVector.length() > 10)
+					objHandler.updateAimLine(firstAim, shootVector);
+			}
+			else if (aim)
+			{
+				this->secondAim = vector(sf::Mouse::getPosition(*gWindow).x, sf::Mouse::getPosition(*gWindow).y);
+				vector shootVector = (this->secondAim - this->firstAim);
+				objHandler.shootArrow(shootVector.angle(), shootVector); // .scale(1.0f));
+				aim = false;
+			}
 
 			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
 			{
@@ -37,6 +55,8 @@ void Game::gameLoop()
 			}
 
 			if (event.type == sf::Event::Closed)
+				gWindow->close();
+			if (event.key.code == sf::Keyboard::Escape)
 				gWindow->close();
 		}
 		
@@ -47,7 +67,7 @@ void Game::gameLoop()
 			
 			gWindow->clear();
 			objHandler.update(t);
-			objHandler.draw();
+			objHandler.draw(this->aim);
 			gWindow->display();
 			clock.restart();
 		}
@@ -65,8 +85,9 @@ void Game::makeWorld()
 	objHandler.addWall(vector(SCREEN_WIDTH, SCREEN_HEIGHT * 2.f / 3.f), vector(SCREEN_WIDTH/2.7f, SCREEN_HEIGHT / 18.f), 0.f);
 	objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(SCREEN_WIDTH/2.f, SCREEN_HEIGHT / 5.9f), 0.f);
 
-	//objHandler.shootArrow(7.f*PAJ / 4.f, SPEED);
-	objHandler.shootArrow(7 * PAJ / 4, vector(70, 10));
+
+
+	objHandler.shootArrow(7.f*PAJ/4.f, vector(100, -50));
 }
 
 void Game::debug_fan()
