@@ -18,8 +18,22 @@ public:
 	void shootArrow(float angle, vector spd);
 	void reset();
 
+	bool collisionArrow_BoundingBox(Arrow arrow, bm::boundingBox bbox);
+	vector collisionArrow_Fan(Arrow arrow, Fan fan);
+
 private:
 	std::vector<Obj> walls;
 	std::vector<Arrow> arrows;
 	std::vector<Fan> fans;
+
+
+	/*
+	*	Structs and functions used to detect collision.
+	*/
+
+	struct Plane
+	{
+		vector normal;	// Ortogonal to plane.
+		float length;	// Length from origo.
+	};
 };

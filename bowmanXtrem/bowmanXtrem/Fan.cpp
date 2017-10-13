@@ -14,6 +14,8 @@ Fan::Fan(vector pos, vector size, float angle, float velocity) : Obj(pos, size, 
 		vec_right.rotate(this->angle);
 	}
 
+	this->windDirection = vec_up;
+
 	area.pos3 = this->pos - vec_right * this->size.x / 2 + vec_up * this->size.y / 2;
 	area.pos4 = this->pos + vec_right * this->size.x / 2 + vec_up * this->size.y / 2;
 	
@@ -42,6 +44,26 @@ void Fan::drawArea()
 	quad[3].color = sf::Color::White;
 
 	gWindow->draw(quad);
+}
+
+bm::boundingBox Fan::getArea()
+{
+	return this->area;
+}
+
+float Fan::getWindVelocity_asFloat()
+{
+	return this->velocity;
+}
+
+vector Fan::getWindDirection()
+{
+	return this->windDirection;
+}
+
+vector Fan::getWindVelocity_asVector()
+{
+	return this->windDirection * this->velocity;
 }
 
 void Fan::draw()

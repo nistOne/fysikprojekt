@@ -10,7 +10,7 @@
 #define PAJ 3.141592f
 #define SPEED 10.f
 
-#define DEBUG false
+#define DEBUG true
 
 struct vector
 {
@@ -106,8 +106,66 @@ namespace bm {
 		return b;
 	}
 	
-	static bool pointInFrontOfPlane(vector point, vector plane_normal, float plane_length)
+	/*
+	*	Structs and functions used to detect collision.
+	*/
+
+	struct Plane
 	{
-		return dotP(point, plane_normal) > plane_length;
+		vector normal;	// Ortogonal to plane.
+		float length;	// Length from origo.
+	};
+
+	struct PlaneBox
+	{
+		Plane planes[4];
+	};
+
+	static PlaneBox planeBoxFromBoundingBox(boundingBox bbox)
+	{
+		// Create all four planes closing the bounding box.
+		Plane planes[4];
+
+		// Calc plane a (passes through point 1 and 2  in bbox).
+		planes[0].normal = (bbox.pos3 - bbox.pos1).normalize();
+		planes[0].length = dotP(bbox.pos1, planes[0].normal);
+
+		// Calc plane b (passes through point 1 and 3 in bbox).
+		planes[1].normal = (bbox.pos4 - bbox.pos3).normalize();
+		planes[1].length = dotP(bbox.pos3, planes[1].normal);
+
+		// Calc plane c (passes through point 2 and 4 in bbox).
+		planes[2].normal = (bbox.pos1 - bbox.pos2).normalize();
+		planes[2].length = dotP(bbox.pos2, planes[2].normal);
+
+		// Calc plane d (passes through point 3 and 4 in bbox).
+		planes[3].normal = (bbox.pos2 - bbox.pos4).normalize();
+		planes[3].length = dotP(bbox.pos4, planes[3].normal);
+
+		return PlaneBox{ planes[0], planes[1], planes[2], planes[3] };
+	}
+
+	static bool pointInFrontOfPlane(vector point, Plane plane)
+	{
+		return dotP(point, plane.normal) > plane.length;
+	}
+
+	static bool pointInsidePlaneBox(vector point, PlaneBox box)
+	{
+		/*
+		* If one of the arrow's bbox corners is in front of all
+		* the planes at once, then it's a hit.
+		*/
+
+		if (!bm::pointInFrontOfPlane(point, box.planes[0]))
+			return false;
+		if (!bm::pointInFrontOfPlane(point, box.planes[1]))
+			return false;
+		if (!bm::pointInFrontOfPlane(point, box.planes[2]))
+			return false;
+		if (!bm::pointInFrontOfPlane(point, box.planes[3]))
+			return false;
+
+		return true;
 	}
 }

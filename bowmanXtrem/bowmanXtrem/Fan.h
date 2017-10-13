@@ -9,6 +9,7 @@ private:
 
 	bm::boundingBox area;
 	float velocity;
+	vector windDirection;
 
 public:
 
@@ -16,6 +17,11 @@ public:
 	~Fan();
 
 	void drawArea();
+
+	bm::boundingBox getArea();
+	float getWindVelocity_asFloat();
+	vector getWindDirection();
+	vector getWindVelocity_asVector();
 
 	virtual void draw();
 };
