@@ -17,19 +17,19 @@ ObjectHandler::~ObjectHandler()
 
 void ObjectHandler::draw(bool aim)
 {
-	for (unsigned int i = 0; i < statObjects.size(); i++)
+	for (unsigned int i = 0; i < walls.size(); i++)
 	{
-		statObjects.at(i).draw();
-	}
-
-	for (unsigned int i = 0; i < arrows.size(); i++)
-	{
-		arrows.at(i).draw();
+		walls[i].draw();
 	}
 
 	for (unsigned int i = 0; i < fans.size(); i++)
 	{
-		fans[i].draw(); 
+		fans[i].draw();
+	}
+
+	for (unsigned int i = 0; i < arrows.size(); i++)
+	{
+		arrows[i].draw();
 	}
 
 	if (true)
@@ -38,15 +38,23 @@ void ObjectHandler::draw(bool aim)
 
 void ObjectHandler::update(float t)
 {
-	
-	for (unsigned int i = 0; i < arrows.size(); i++)
-		this->arrows[i].update(t);
 
+	for (unsigned int i = 0; i < arrows.size(); i++)
+	{
+		for (unsigned int j = 0; j < walls.size() && this->arrows[i].isFlying(); j++)
+		{
+			if (this->arrows[i].collideWith(walls[j].getBoundingBox()))
+			{
+				this->arrows[i].endFlight();
+			}
+		}
+		this->arrows[i].update(t);
+	}
 }
 
 void ObjectHandler::addWall(vector pos, vector size, float angle)
 {
-	statObjects.push_back(Wall(pos, size, angle));
+	walls.push_back(Wall(pos, size, angle));
 }
 
 void ObjectHandler::addFan(vector pos, vector size, float angle, float velocity)
@@ -56,10 +64,12 @@ void ObjectHandler::addFan(vector pos, vector size, float angle, float velocity)
 
 void ObjectHandler::shootArrow(float angle, vector spd)
 {
-	//dynObjects.push_back(Arrow(vector(10, SCREEN_HEIGHT / 2), vector(20, 2), angle, spd));
-	if(arrows.size() > 0)
+	while (arrows.size() > 0)
+	{
 		arrows.pop_back();
+	}
 	arrows.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(20,2), angle, spd));
+}
 
 }
 
@@ -68,4 +78,11 @@ void ObjectHandler::updateAimLine(vector start, vector vec)
 	aimLine.front().editLine(start, vec);
 
 	//statObjects.front().editLine(start, vec);
+}
+void ObjectHandler::reset()
+{
+	for (unsigned int i = 0; i < this->arrows.size(); i++)
+	{
+		this->arrows[i].reset();
+	}
 }

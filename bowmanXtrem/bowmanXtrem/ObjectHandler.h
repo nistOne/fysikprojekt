@@ -7,6 +7,7 @@
 class ObjectHandler
 {
 public:
+
 	ObjectHandler();
 	~ObjectHandler();
 
@@ -15,10 +16,11 @@ public:
 	void addWall(vector pos, vector size, float angle);
 	void addFan(vector pos, vector size, float angle, float velocity);
 	void shootArrow(float angle, vector spd);
-	void updateAimLine(vector start, vector vec);
+	void reset();
 
 private:
 	std::vector<Wall> statObjects;
+	std::vector<Obj> walls;
 	std::vector<Arrow> arrows;
 	std::vector<Fan> fans;
 	std::vector<Wall> aimLine;

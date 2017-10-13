@@ -48,8 +48,12 @@ void Game::gameLoop()
 				aim = false;
 			}
 
-			if (event.key.code == sf::Keyboard::R)
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
+			{
 				objHandler.shootArrow(7 * PAJ / 4, vector(100, -50));
+				objHandler.reset();
+			}
+
 			if (event.type == sf::Event::Closed)
 				gWindow->close();
 			if (event.key.code == sf::Keyboard::Escape)

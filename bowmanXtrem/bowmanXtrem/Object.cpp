@@ -45,10 +45,34 @@ Obj::~Obj()
 
 void Obj::draw()
 {
-	gWindow->draw(this->shape);
+	if (DEBUG)
+	{
+		sf::VertexArray quad(sf::Quads, 4);
+
+		quad[0].position = bbox.pos1.asVector2f();
+		quad[1].position = bbox.pos2.asVector2f();
+		quad[2].position = bbox.pos4.asVector2f();
+		quad[3].position = bbox.pos3.asVector2f();
+
+		quad[0].color = sf::Color::Red;
+		quad[1].color = sf::Color::Green;
+		quad[2].color = sf::Color::Blue;
+		quad[3].color = sf::Color::White;
+
+		gWindow->draw(quad);
+	}
+	else
+	{
+		gWindow->draw(this->shape);
+	}
 }
 
 void Obj::update(float t)
 {
 
+}
+
+bm::boundingBox Obj::getBoundingBox()
+{
+	return this->bbox;
 }

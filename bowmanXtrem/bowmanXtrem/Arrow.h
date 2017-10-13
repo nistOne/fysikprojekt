@@ -18,7 +18,11 @@ public:
 	void update(float t) override;
 	bool collideWith(bm::boundingBox box);
 
-	virtual void draw_debug() {}
+	virtual void draw_debug() { Obj::draw(); }
+
+	bool isFlying();
+	void endFlight();
+	void reset();
 
 private:
 	vector dir;
@@ -28,5 +32,6 @@ private:
 	float A;
 	float Cd;
 
+	bool inAir;
 };
 
