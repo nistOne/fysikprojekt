@@ -50,7 +50,7 @@ void Game::gameLoop()
 
 			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::R)
 			{
-				objHandler.shootArrow(7 * PAJ / 4, vector(100, -50));
+				objHandler.shootArrow(7 * PAJ / 4, vector(30, -20));
 				objHandler.reset();
 			}
 
@@ -85,9 +85,8 @@ void Game::makeWorld()
 	objHandler.addWall(vector(SCREEN_WIDTH, SCREEN_HEIGHT * 2.f / 3.f), vector(SCREEN_WIDTH/2.7f, SCREEN_HEIGHT / 18.f), 0.f);
 	objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(SCREEN_WIDTH/2.f, SCREEN_HEIGHT / 5.9f), 0.f);
 
-
-
-	objHandler.shootArrow(7.f*PAJ/4.f, vector(100, -50));
+	//objHandler.shootArrow(7.f*PAJ / 4.f, SPEED);
+	objHandler.shootArrow(7 * PAJ / 4, vector(100, -5));
 }
 
 void Game::debug_fan()

@@ -6,6 +6,8 @@
 #define SCREEN_WIDTH_MIDDLE SCREEN_WIDTH/2 
 #define SCREEN_HEIGHT_MIDDLE SCREEN_HEIGHT/2 
 
+#define SCALE 100
+
 
 #define PAJ 3.141592f
 #define SPEED 10.f
@@ -40,6 +42,11 @@ struct vector
 	vector operator* (float scalar)
 	{
 		return vector(x*scalar, y*scalar);
+	}
+
+	vector operator* (vector vec)
+	{
+		return vector(x*vec.x, y*vec.y);
 	}
 
 	vector operator/ (float denominate)

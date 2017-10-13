@@ -7,33 +7,46 @@ Arrow::Arrow(vector pos, vector size, float angle, vector spd) : Obj(pos, size, 
 	this->dir = vector(cos(angle), sin(angle));
 	this->pos = pos;
 	this->speed = spd;
-	this->acc.x = 0.0;
-	this->acc.y = GRAVITY;
 	this->A = PAJ * 0.395 * 0.395; //0.395 radie på pilen
 	this->inAir = true;
+	this->Fg = vector(0, GRAVITY * this->weight);
+	this->Fd = vector(0, 0);
+	this->Ff = vector(0, 0);
 }
 
 Arrow::~Arrow()
 {
 }
 
-void Arrow::update(float t)
+float Arrow::getAngle()
+{
+	vector temp = this->speed - (this->Ff / this->weight);
+
+	return atanf(temp.y / temp.x) * 180 / PAJ; 
+}
+
+void Arrow::update(float t, vector spdWnd)
 {
 	if (inAir)
 	{
 		//Update arrow position
-		this->pos.x = this->pos.x + this->speed.x * t;
-		this->pos.y = this->pos.y + this->speed.y * t;
+		this->pos = this->pos + (this->speed * t);
 
 		//Update arrow speed
-		this->speed.x = this->speed.x + this->acc.x * t;
-		this->speed.y = this->speed.y + this->acc.y * t;
+		this->speed = this->speed + this->acc * t;
 
 		//Update arrow direction
 		this->dir = this->speed.normalize();
 
 		//Update arrow acceleration
-		this->acc.x = this->acc.x + (-1.5) * t;
+		this->acc = ((this->Fd + this->Ff + this->Fg) / this->weight);
+
+		//Update arrow forces
+		this->Fd = (this->spdRelWind * this->spdRelWind * this->Cd) * (this->dir * (-1));
+		this->Ff = spdWnd * this->weight;
+
+		//Update spdRelWind
+		this->spdRelWind = this->speed - spdWnd;
 
 		//Set arrow position and rotate the texture
 		this->shape.setRotation(getAngle());
@@ -54,24 +67,6 @@ void Arrow::update(float t)
 		bbox.pos3 = this->pos - vec_right * this->size.x / 2 - vec_up * this->size.y / 2;
 		bbox.pos4 = this->pos + vec_right * this->size.x / 2 - vec_up * this->size.y / 2;
 	}
-
-
-	/*
-	vector pre = pos;
-
-	float a = 0.000001;
-
-	vector res;
-	res.x = dir.x * spd;
-	res.y = dir.y * spd;
-
-	pos = pos + res;
-
-	pos.y = SCREEN_HEIGHT_MIDDLE + res.y*t + ((a*t*t) / 2);
-
-	this->shape.setRotation(getAngle());
-	this->shape.setPosition(sf::Vector2f(pos.x, pos.y));
-	*/
 }
 
 bool Arrow::collideWith(bm::boundingBox box)
@@ -191,4 +186,9 @@ void Arrow::endFlight()
 void Arrow::reset()
 {
 	this->inAir = true;
+}
+
+void Arrow::addForceToArrow(vector force)
+{
+
 }
