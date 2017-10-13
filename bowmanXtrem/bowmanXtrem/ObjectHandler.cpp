@@ -71,8 +71,6 @@ void ObjectHandler::shootArrow(float angle, vector spd)
 	arrows.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(20,2), angle, spd));
 }
 
-}
-
 void ObjectHandler::updateAimLine(vector start, vector vec)
 {
 	aimLine.front().editLine(start, vec);
