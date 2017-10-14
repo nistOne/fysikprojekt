@@ -54,7 +54,6 @@ int ObjectHandler::update(float t)
 			if(collisionArrow_BoundingBox(this->arrows[i], walls[j].getBoundingBox()))
 			{
 				this->arrows[i].endFlight();
-				std::cout << "Klarade du analysen?" << std::endl;
 			}
 		}
 
