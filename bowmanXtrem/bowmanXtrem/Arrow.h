@@ -26,6 +26,7 @@ public:
 	vector getSpeed();
 
 private:
+	sf::Texture tex;
 	vector dir;
 	vector speed;
 	vector acc;

@@ -18,6 +18,11 @@ Arrow::Arrow(vector pos, vector size, float angle, vector spd) : Obj(pos, size, 
 	this->Ff = vector(0.f, 0.f);
 
 	this->shape.setOrigin(this->size.asVector2f());
+	
+	//this->tex.loadFromFile("arrow.png", sf::IntRect(8,10, 25, 15));
+	//this->tex.setSmooth(true);
+
+
 }
 
 Arrow::~Arrow()
@@ -35,9 +40,10 @@ void Arrow::update(float t, vector spdWnd)
 {
 	if (inAir)
 	{
+
 		//Update arrow position
 		this->pos = this->pos + (this->speed * t);
-
+		this->shape.setTexture(&tex);
 		//Update arrow speed
 		this->speed = this->speed + this->acc * t;
 
