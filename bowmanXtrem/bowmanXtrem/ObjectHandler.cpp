@@ -3,13 +3,15 @@
 #include "Arrow.h"
 #include "Fan.h"
 
+#include <iostream>
+
 //#include <iostream>
 
 ObjectHandler::ObjectHandler()
 {
 	aimLine.push_back(Wall(
-		vector(SCREEN_WIDTH_MIDDLE, SCREEN_HEIGHT_MIDDLE), 
-		vector(200, 10), 
+		vector(0,0), 
+		vector(0, 10), 
 		0.0f));
 }
 
@@ -36,10 +38,13 @@ void ObjectHandler::draw(bool aim)
 
 	if (aim)
 		aimLine.front().draw();
+
+	target.front().draw();
 }
 
-void ObjectHandler::update(float t)
+int ObjectHandler::update(float t)
 {
+	int returnValue = 0; 
 
 	for (unsigned int i = 0; i < arrows.size(); i++)
 	{
@@ -49,7 +54,15 @@ void ObjectHandler::update(float t)
 			if(collisionArrow_BoundingBox(this->arrows[i], walls[j].getBoundingBox()))
 			{
 				this->arrows[i].endFlight();
+				std::cout << "Klarade du analysen?" << std::endl;
 			}
+		}
+
+		if (collisionArrow_BoundingBox(this->arrows[i], this->target.front().getBoundingBox()))
+		{
+			this->arrows[i].endFlight();
+			std::cout << "TARGET DOWN!!!!!!!!" << std::endl;
+			returnValue = 1;
 		}
 
 		//for (unsigned int j = 0; j < fans.size(); j++)
@@ -83,11 +96,19 @@ void ObjectHandler::update(float t)
 			this->fans[i].update(t);
 		}
 	}
+
+	return returnValue;
 }
 
 void ObjectHandler::addWall(vector pos, vector size, float angle)
 {
 	walls.push_back(Wall(pos, size, angle));
+}
+
+void ObjectHandler::addTarget(vector pos, vector size, float angle)
+{
+	target.push_back(Wall(pos, size, angle));
+	target.front().setColor(sf::Color::Magenta);
 }
 
 void ObjectHandler::addFan(vector pos, vector size, float angle, float velocity)
@@ -116,6 +137,15 @@ void ObjectHandler::reset()
 	{
 		this->arrows[i].reset();
 	}
+}
+
+void ObjectHandler::clear()
+{
+
+	this->walls.clear();
+	this->target.clear(); 
+	this->arrows.clear();
+	this->fans.clear();
 }
 
 bool ObjectHandler::collisionArrow_BoundingBox(Arrow arrow, bm::boundingBox bbox)

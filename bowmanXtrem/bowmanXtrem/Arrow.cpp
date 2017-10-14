@@ -16,6 +16,8 @@ Arrow::Arrow(vector pos, vector size, float angle, vector spd) : Obj(pos, size, 
 	this->Fg = vector(0.f, GRAVITY * this->weight);
 	this->Fd = vector(0.f, 0.f);
 	this->Ff = vector(0.f, 0.f);
+
+	this->shape.setOrigin(this->size.asVector2f());
 }
 
 Arrow::~Arrow()

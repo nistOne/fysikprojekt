@@ -77,7 +77,12 @@ void Game::gameLoop()
 		{
 			
 			gWindow->clear();
-			objHandler.update(t);
+			int results = objHandler.update(t);
+			if (results)
+			{
+				this->stage = results;
+				this->makeWorld();
+			}
 			objHandler.draw(this->aim);
 			arrSpeed = getArrowSpeed();
 			arrText.setString(arrSpeed);
@@ -95,18 +100,42 @@ void Game::restart(sf::Clock& clock)
 
 void Game::makeWorld()
 {
-	objHandler.addWall(vector(0.f, SCREEN_HEIGHT*2.f/3.f), vector(SCREEN_WIDTH/2.7f, SCREEN_HEIGHT/18.f), 0.f);
-	objHandler.addWall(vector(SCREEN_WIDTH, SCREEN_HEIGHT * 2.f / 3.f), vector(SCREEN_WIDTH/2.7f, SCREEN_HEIGHT / 18.f), 0.f);
-	objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(SCREEN_WIDTH/2.f, SCREEN_HEIGHT / 5.9f), 0.f);
+	objHandler.clear();
 
-	objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(60.f, 10.f), 0.f, 100.f);
+	switch (stage)
+	{
+	case 0:
+		/*Target*/
+		objHandler.addTarget(vector(SCREEN_WIDTH * 0.9f, SCREEN_HEIGHT * 2.f / 3.2f), vector(SCREEN_WIDTH / 25.f, SCREEN_HEIGHT / 20.f), 45.f);
+
+		/*Walls*/
+		objHandler.addWall(vector(0.f, SCREEN_HEIGHT*2.f / 3.f), vector(SCREEN_WIDTH / 2.7f, SCREEN_HEIGHT / 18.f), 0.f);
+		objHandler.addWall(vector(SCREEN_WIDTH, SCREEN_HEIGHT * 2.f / 3.f), vector(SCREEN_WIDTH / 2.7f, SCREEN_HEIGHT / 18.f), 0.f);
+		objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 5.9f), 0.f);
+
+		/*Fans*/
+		objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(60.f, 10.f), 0.f, 70.f);
+		objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE - 200, 100), vector(60.f, 10.f), 160.f, 30.f);
+		break;
+	case 1:
+		/*Target*/
+		objHandler.addTarget(vector(SCREEN_WIDTH * 0.8f, SCREEN_HEIGHT * 2.f / 3.2f), vector(SCREEN_WIDTH / 25.f, SCREEN_HEIGHT / 7.f), 115.f);
+
+		/*Walls*/
+		objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, 0), vector(SCREEN_WIDTH * 0.05f, SCREEN_HEIGHT * 1.5f), 0.f);
+
+		/*Fans*/
+		objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT - 10.f) + SCREEN_HEIGHT / 4.5f), vector(60.f, 10.f), 0.f, 270.f);
+		
+		break;
+	default:
+		break;
+	}
 	
-
 	/* World Wind */
 	//objHandler.addFan(vector(-10.f, SCREEN_HEIGHT_MIDDLE), vector(SCREEN_HEIGHT, 0), 90.f, 10.f);
 
-
-
+	/*Default arrow, for debuging*/
 	objHandler.shootArrow(7.f*PAJ/4.f, vector(100, -50));
 }
 

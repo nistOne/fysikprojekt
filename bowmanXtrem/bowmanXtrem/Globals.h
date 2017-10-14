@@ -7,10 +7,12 @@
 #define SCREEN_HEIGHT_MIDDLE SCREEN_HEIGHT/2 
 
 #define SCALE 100
-#define SPEED_CAP 160.0f
+#define SPEED_CAP 260.0f
 
 #define PAJ 3.141592f
 #define SPEED 10.f
+
+#define LEVEL 1
 
 #define DEBUG false
 #define SHOWWIND true
