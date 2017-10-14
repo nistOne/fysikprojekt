@@ -34,7 +34,7 @@ void ObjectHandler::draw(bool aim)
 		arrows[i].draw();
 	}
 
-	if (true)
+	if (aim)
 		aimLine.front().draw();
 }
 
@@ -63,8 +63,18 @@ void ObjectHandler::update(float t)
 		//		std::cout << "Lame.." << std::endl;
 		//}
 
-		this->arrows[i].update(t, vector(0,0));
+		vector fanSum;	
+		for (int i = 0; i < this->fans.size(); i++)
+		{
+			fanSum = fanSum + this->collisionArrow_Fan(arrows.front(), fans.at(i));
+		}
+
+		this->arrows[i].update(t, fanSum);
 	}
+
+	
+	
+
 
 	if (SHOWWIND)
 	{

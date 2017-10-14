@@ -6,7 +6,11 @@ Arrow::Arrow(vector pos, vector size, float angle, vector spd) : Obj(pos, size, 
 
 	this->dir = vector(cos(angle), sin(angle));
 	this->pos = pos;
-	this->speed = spd;
+	if (spd.length() < SPEED_CAP)
+		this->speed = spd;
+	else
+		this->speed = spd.normalize() * SPEED_CAP;
+
 	this->A = PAJ * 0.395 * 0.395; //0.395 radie på pilen
 	this->inAir = true;
 	this->Fg = vector(0.f, GRAVITY * this->weight);

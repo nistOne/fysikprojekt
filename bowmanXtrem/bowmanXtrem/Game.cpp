@@ -43,8 +43,9 @@ void Game::gameLoop()
 			else if (aim)
 			{
 				this->secondAim = vector(sf::Mouse::getPosition(*gWindow).x, sf::Mouse::getPosition(*gWindow).y);
-				vector shootVector = (this->secondAim - this->firstAim);
+				vector shootVector = (this->firstAim - this->secondAim);
 				objHandler.shootArrow(shootVector.angle(), shootVector); // .scale(1.0f));
+				objHandler.updateAimLine(vector(0,0), vector(0, 0));
 				aim = false;
 			}
 
@@ -85,7 +86,7 @@ void Game::makeWorld()
 	objHandler.addWall(vector(SCREEN_WIDTH, SCREEN_HEIGHT * 2.f / 3.f), vector(SCREEN_WIDTH/2.7f, SCREEN_HEIGHT / 18.f), 0.f);
 	objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(SCREEN_WIDTH/2.f, SCREEN_HEIGHT / 5.9f), 0.f);
 
-	objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(60.f, 10.f), 0.f, 10.f);
+	objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(60.f, 10.f), 0.f, 100.f);
 	
 
 	/* World Wind */
