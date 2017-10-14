@@ -24,3 +24,8 @@ void Wall::editLine(vector pos, vector line)
 	this->shape.setFillColor(this->color);
 }
 
+void Wall::setColor(sf::Color newColor)
+{
+	this->shape.setFillColor(newColor);
+}
+

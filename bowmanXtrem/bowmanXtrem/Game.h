@@ -19,6 +19,8 @@ private:
 	bool run = true;
 	bool aim = false;
 
+	int stage = 0;
+
 	vector firstAim, secondAim;
 
 	float t = 0;
