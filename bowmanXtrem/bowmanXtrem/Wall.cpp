@@ -17,6 +17,7 @@ void Wall::editLine(vector pos, vector line)
 	this->angle = line.angle();
 	this->size.x = line.length();
 
+	this->shape.setOrigin((size*1.0f).asVector2f());
 	this->shape.setSize(this->size.asVector2f());
 	this->shape.setRotation(this->angle);
 	this->shape.setPosition(this->pos.asVector2f());
