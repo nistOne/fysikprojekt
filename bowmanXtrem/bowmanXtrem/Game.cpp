@@ -2,6 +2,7 @@
 #include "Window.h"
 
 #include <iostream>
+#include <sstream>
 
 Game::Game()
 {
@@ -18,6 +19,15 @@ void Game::gameLoop()
 
 	makeWorld();
 	//debug_fan();
+
+	sf::Text arrText;
+	sf::Font font;
+	font.loadFromFile("font.ttf");
+	arrText.setFont(font);
+	arrText.setCharacterSize(20);
+	arrText.setColor(sf::Color::Red);
+	std::string arrSpeed;
+	//arrText.setStyle();
 
 	sf::Clock clock;
 
@@ -74,6 +84,9 @@ void Game::gameLoop()
 				this->makeWorld();
 			}
 			objHandler.draw(this->aim);
+			arrSpeed = getArrowSpeed();
+			arrText.setString(arrSpeed);
+			gWindow->draw(arrText);
 			gWindow->display();
 			clock.restart();
 		}
@@ -129,4 +142,18 @@ void Game::makeWorld()
 void Game::debug_fan()
 {
 	objHandler.addFan(vector(SCREEN_WIDTH/4.f, SCREEN_HEIGHT*3.f/4.f), vector(150.f, 20.f), 15.f, 10.f);
+}
+
+std::string Game::getArrowSpeed()
+{
+	std::string text;
+	vector speed = this->objHandler.getArrowSpeed();
+	std::ostringstream buff; 
+	std::ostringstream buff2;
+	buff << speed.x;
+	text += "Arrow speed x: " + buff.str() + "\n";
+	buff2 << speed.y;
+	text += "Arrow speed y: " + buff2.str() + "\n";
+
+	return text;
 }

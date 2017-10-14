@@ -23,6 +23,7 @@ public:
 
 	bool collisionArrow_BoundingBox(Arrow arrow, bm::boundingBox bbox);
 	vector collisionArrow_Fan(Arrow arrow, Fan fan);
+	vector getArrowSpeed();
 
 private:
 	std::vector<Wall> walls;
