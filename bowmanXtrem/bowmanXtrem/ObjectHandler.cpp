@@ -193,3 +193,8 @@ vector ObjectHandler::collisionArrow_Fan(Arrow arrow, Fan fan)
 	// .. else return fans wind-velocity-vector.
 	return fan.getWindVelocity_asVector();
 }
+
+vector ObjectHandler::getArrowSpeed()
+{
+	return this->arrows.front().getSpeed();
+}

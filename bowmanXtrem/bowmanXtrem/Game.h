@@ -26,5 +26,6 @@ private:
 
 	void makeWorld();
 	void debug_fan();
+	std::string getArrowSpeed();
 };
 

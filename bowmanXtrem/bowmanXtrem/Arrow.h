@@ -23,6 +23,7 @@ public:
 	void endFlight();
 	void reset();
 	void addForceToArrow(vector force);
+	vector getSpeed();
 
 private:
 	vector dir;

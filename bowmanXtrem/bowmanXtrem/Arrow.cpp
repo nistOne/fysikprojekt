@@ -92,3 +92,8 @@ void Arrow::addForceToArrow(vector force)
 {
 
 }
+
+vector Arrow::getSpeed()
+{
+	return this->speed;
+}
