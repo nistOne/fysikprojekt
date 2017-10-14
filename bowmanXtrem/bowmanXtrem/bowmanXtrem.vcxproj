@@ -23,7 +23,7 @@
     <ProjectGuid>{A476A03A-EF24-46D5-9DB5-64FCB37AD7F9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>bowmanXtrem</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -153,6 +153,7 @@
     <ClCompile Include="ObjectHandler.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Wind_particleSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="goals.txt" />
@@ -166,6 +167,7 @@
     <ClInclude Include="ObjectHandler.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="Wind_particleSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

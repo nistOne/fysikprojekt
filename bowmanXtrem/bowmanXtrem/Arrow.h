@@ -2,8 +2,8 @@
 #include "Object.h"
 #include <math.h>
 
-#define GRAVITY 9.82
-#define AIRDENSITY 1.225
+#define GRAVITY 9.82f
+#define AIRDENSITY 1.225f
 
 class Arrow : public Obj
 {
@@ -16,13 +16,13 @@ public:
 	float getAngle(); 
 
 	void update(float t, vector spdWnd); // override;
-	bool collideWith(bm::boundingBox box);
+
+	virtual void draw_debug() { Obj::draw(); }
+
 	bool isFlying();
 	void endFlight();
 	void reset();
 	void addForceToArrow(vector force);
-
-	virtual void draw_debug() { Obj::draw(); }
 
 private:
 	vector dir;

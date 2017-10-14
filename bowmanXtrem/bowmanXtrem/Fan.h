@@ -1,7 +1,6 @@
 #pragma once
 #include "Object.h"
-
-#include <iostream>
+#include "Wind_particleSystem.h"
 
 class Fan : public Obj
 {
@@ -9,6 +8,9 @@ private:
 
 	bm::boundingBox area;
 	float velocity;
+	vector windDirection;
+
+	windParticleSystem pSystem;
 
 public:
 
@@ -17,5 +19,11 @@ public:
 
 	void drawArea();
 
+	bm::boundingBox getArea();
+	float getWindVelocity_asFloat();
+	vector getWindDirection();
+	vector getWindVelocity_asVector();
+
 	virtual void draw();
+	virtual void update(float t);
 };

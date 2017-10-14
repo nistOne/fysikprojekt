@@ -14,11 +14,28 @@ Fan::Fan(vector pos, vector size, float angle, float velocity) : Obj(pos, size, 
 		vec_right.rotate(this->angle);
 	}
 
+	this->windDirection = vec_up;
+
 	area.pos3 = this->pos - vec_right * this->size.x / 2 + vec_up * this->size.y / 2;
 	area.pos4 = this->pos + vec_right * this->size.x / 2 + vec_up * this->size.y / 2;
 	
 	area.pos1 = area.pos3 + vec_up * 5000;
 	area.pos2 = area.pos4 + vec_up * 5000;
+
+	// Setup particle system
+	//this->pSystem.setEmitter(this->pos.asVector2f());
+	//this->pSystem.setFanUpVector(vec_up.asVector2f());
+	//this->pSystem.setFanRightVector(vec_right.asVector2f());
+	//this->pSystem.setFanVelocity(this->velocity);
+	//this->pSystem.setFanWidth(this->size.x);
+
+	this->pSystem.setFanData(
+		this->pos.asVector2f(),
+		vec_up.asVector2f(),
+		vec_right.asVector2f(),
+		this->velocity,
+		this->size.x
+	);
 }
 
 Fan::~Fan()
@@ -44,11 +61,38 @@ void Fan::drawArea()
 	gWindow->draw(quad);
 }
 
+bm::boundingBox Fan::getArea()
+{
+	return this->area;
+}
+
+float Fan::getWindVelocity_asFloat()
+{
+	return this->velocity;
+}
+
+vector Fan::getWindDirection()
+{
+	return this->windDirection;
+}
+
+vector Fan::getWindVelocity_asVector()
+{
+	return this->windDirection * this->velocity;
+}
+
 void Fan::draw()
 {
 	if (DEBUG)
 		drawArea();
 
+	if(SHOWWIND)
+		gWindow->draw(this->pSystem);
 
 	Obj::draw();
+}
+
+void Fan::update(float t)
+{
+	this->pSystem.update(t);
 }

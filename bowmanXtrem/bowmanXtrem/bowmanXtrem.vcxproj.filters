@@ -39,6 +39,9 @@
     <ClCompile Include="Fan.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Wind_particleSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="goals.txt">
@@ -68,6 +71,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Wind_particleSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
