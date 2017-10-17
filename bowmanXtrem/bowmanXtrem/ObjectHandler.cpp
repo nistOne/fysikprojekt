@@ -121,7 +121,7 @@ void ObjectHandler::shootArrow(float angle, vector spd)
 	{
 		arrows.pop_back();
 	}
-	arrows.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(20,2), angle, spd));
+	arrows.push_back(Arrow(vector(10, SCREEN_HEIGHT/2), vector(20,2), angle, spd / SCALE));
 }
 
 void ObjectHandler::updateAimLine(vector start, vector vec)

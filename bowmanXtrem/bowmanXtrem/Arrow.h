@@ -1,6 +1,7 @@
 #pragma once
 #include "Object.h"
 #include <math.h>
+#include "Window.h"
 
 #define GRAVITY 9.82f
 #define AIRDENSITY 1.225f
@@ -35,6 +36,10 @@ private:
 	vector Ff;
 	vector Fg;
 	vector spdRelWind;
+
+	sf::Font font;
+	sf::Text arrText;
+	
 
 	float A;
 	float Cd = 0.0001;

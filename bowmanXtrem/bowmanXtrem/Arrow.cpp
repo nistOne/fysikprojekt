@@ -1,6 +1,7 @@
 #include "Arrow.h"
 #include <stdio.h>
 
+
 Arrow::Arrow(vector pos, vector size, float angle, vector spd) : Obj(pos, size, angle)
 {
 
@@ -23,6 +24,8 @@ Arrow::Arrow(vector pos, vector size, float angle, vector spd) : Obj(pos, size, 
 	//this->tex.setSmooth(true);
 
 
+
+
 }
 
 Arrow::~Arrow()
@@ -40,9 +43,8 @@ void Arrow::update(float t, vector spdWnd)
 {
 	if (inAir)
 	{
-
 		//Update arrow position
-		this->pos = this->pos + (this->speed * t);
+		this->pos = this->pos + ((this->speed * t) * SCALE);
 		this->shape.setTexture(&tex);
 		//Update arrow speed
 		this->speed = this->speed + this->acc * t;
@@ -63,6 +65,21 @@ void Arrow::update(float t, vector spdWnd)
 		//Set arrow position and rotate the texture
 		this->shape.setRotation(getAngle());
 		this->shape.setPosition(sf::Vector2f(pos.x, pos.y));
+
+		//Update arrow info text
+		this->font.loadFromFile("font.ttf");
+		this->arrText.setFont(this->font);
+		this->arrText.setCharacterSize(20);
+		this->arrText.setColor(sf::Color::Red);
+		
+		std::string info = "";
+		info += "Arrow speed x: " + std::to_string(this->speed.x) + "\n";
+		info += "Arrow speed y: " + std::to_string(this->speed.y) + "\n";
+		info += "Arrow acc x: " + std::to_string(this->acc.x) + "\n";
+		info += "Arrow acc y: " + std::to_string(this->acc.y) + "\n";
+
+		this->arrText.setString(info);
+		gWindow->draw(this->arrText);
 
 		/*
 		*	Update bounding box

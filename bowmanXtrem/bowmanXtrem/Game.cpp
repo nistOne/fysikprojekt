@@ -20,14 +20,13 @@ void Game::gameLoop()
 	makeWorld();
 	//debug_fan();
 
-	sf::Text arrText;
-	sf::Font font;
-	font.loadFromFile("font.ttf");
-	arrText.setFont(font);
-	arrText.setCharacterSize(20);
-	arrText.setColor(sf::Color::Red);
-	std::string arrSpeed;
-	//arrText.setStyle();
+	//sf::Text arrText;
+	//sf::Font font;
+	//font.loadFromFile("font.ttf");
+	//arrText.setFont(font);
+	//arrText.setCharacterSize(20);
+	//arrText.setColor(sf::Color::Red);
+	//std::string arrSpeed;
 
 	sf::Clock clock;
 
@@ -67,7 +66,7 @@ void Game::gameLoop()
 
 			if (event.type == sf::Event::Closed)
 				gWindow->close();
-			if (event.key.code == sf::Keyboard::Escape)
+			if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
 				gWindow->close();
 		}
 		
@@ -84,9 +83,9 @@ void Game::gameLoop()
 				this->makeWorld();
 			}
 			objHandler.draw(this->aim);
-			arrSpeed = getArrowSpeed();
-			arrText.setString(arrSpeed);
-			gWindow->draw(arrText);
+		//	arrSpeed = getArrowSpeed();
+		//	arrText.setString(arrSpeed);
+		//	gWindow->draw(arrText);
 			gWindow->display();
 			clock.restart();
 		}
@@ -114,8 +113,14 @@ void Game::makeWorld()
 		objHandler.addWall(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(SCREEN_WIDTH / 2.f, SCREEN_HEIGHT / 5.9f), 0.f);
 
 		/*Fans*/
-		objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(60.f, 10.f), 0.f, 70.f);
-		objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE - 200, 100), vector(60.f, 10.f), 160.f, 30.f);
+		objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT * 2.f / 3.f) + SCREEN_HEIGHT / 4.5f), vector(60.f, 10.f), 0.f, 20.f);
+		objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE - 200, 100), vector(60.f, 10.f), 160.f, 10.f);
+		
+		//objHandler.addFan(vector(10, SCREEN_HEIGHT / 2.f + 10.f), vector(10.f, 1.f), 90.f, 1000.f);
+
+		objHandler.addFan(vector(10, SCREEN_HEIGHT / 2.f), vector(10.f, 10.f), 0.f, 0.f);
+
+			
 		break;
 	case 1:
 		/*Target*/
@@ -127,6 +132,9 @@ void Game::makeWorld()
 		/*Fans*/
 		objHandler.addFan(vector(SCREEN_WIDTH_MIDDLE, (SCREEN_HEIGHT - 10.f) + SCREEN_HEIGHT / 4.5f), vector(60.f, 10.f), 0.f, 270.f);
 		
+		objHandler.addFan(vector(10, SCREEN_HEIGHT / 2.f), vector(10.f, 10.f), 0.f, 0.f);
+
+
 		break;
 	default:
 		break;
